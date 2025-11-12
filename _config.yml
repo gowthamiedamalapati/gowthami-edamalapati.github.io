@@ -1,0 +1,10 @@
+title: Gouthami Edamalapati
+description: Notes, projects, and experiments with AI/ML and engineering.
+theme: minima
+author: Gouthami Edamalapati
+minima:
+  social_links:
+    - platform: github
+      user_url: https://github.com/gouthami-edamalapati
+# Optional: show posts on homepage
+show_excerpts: true
