@@ -1,8 +1,10 @@
 
+---
 layout: post
 title: "AI Code Review Assistant — LLM + RAG with OpenAI & Pinecone"
 date: 2025-11-12
 categories: [AI, LLM, RAG, Pinecone, OpenAI]
+---
 
 ## Project Overview
 
