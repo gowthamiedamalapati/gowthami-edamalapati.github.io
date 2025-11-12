@@ -35,3 +35,31 @@ Resp: { ok, review: { raw, structured } }
 POST /fix
 Body: { code, language, filename }
 Resp: { ok, code }
+```
+
+## 💡 Learnings and Takeaways
+
+### 🧩 1. AI Integration Patterns
+LLMs alone are stateless, but connecting them with a vector database (Pinecone) transforms them into a reasoning system with memory.  
+Building a small RAG pipeline gave me deeper understanding of embedding storage, similarity search, and context injection.
+
+### 🧠 2. Prompt Engineering Matters
+Different instructions drastically changed the quality of suggestions.  
+Adding “explain like a senior engineer reviewing production code” improved tone and structure.
+
+### ⚡ 3. End-to-End Ownership
+I built both frontend and backend — integrating Tailwind, React hooks (`useState`, `useEffect`), and asynchronous fetch requests to verify system health.  
+Debugging full-stack OpenAI + Pinecone integration taught me how to trace data flow and manage environment variables securely.
+
+---
+
+## 🪄 Future Improvements
+- Deploy backend to Render or AWS Lambda  
+- Add user authentication for personalized context memory  
+- Implement LLM feedback fine-tuning based on user-rated responses  
+
+---
+
+## 🧾 Conclusion
+This project helped me explore **LLM integration engineering** — connecting AI reasoning models with external data sources for intelligent automation.  
+It reinforced how **RAG pipelines**, when implemented thoughtfully, can make AI assistants **context-aware and highly reliable**.
