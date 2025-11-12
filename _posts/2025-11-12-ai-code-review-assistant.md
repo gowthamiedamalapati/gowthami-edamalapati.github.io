@@ -8,7 +8,6 @@ categories: [AI, LLM, RAG, Pinecone, OpenAI]
 ## Project Overview
 As part of my learning journey in AI integrations, I built a full-stack **AI Code Review Assistant** — a tool that analyzes source code, detects security or performance issues, and suggests automated fixes.  
 
-
 It uses:
 - **OpenAI GPT models** for reasoning and feedback generation  
 - **Pinecone** for vector storage and similarity search (RAG)  
@@ -21,10 +20,14 @@ The **backend** validates input and sends it to OpenAI, optionally enriching con
 The **RAG pipeline** retrieves semantically similar code patterns to ground AI responses in realistic examples.
 
 ## Retrieval-Augmented Generation (RAG)
-- Store embeddings of known code patterns (e.g., SQL injection, unsafe concatenation, missing error handling) in Pinecone.  
-- Embed incoming code with `text-embedding-3-small`.  
-- Retrieve top-k similar snippets.  
-- Add them to the OpenAI prompt for grounded advice.
+To improve accuracy and reduce hallucinations:
+- I stored embeddings of known code “patterns” (e.g., SQL injection, unsafe concatenation, missing error handling) in Pinecone.
+- When new code is submitted, it’s embedded using OpenAI’s `text-embedding-3-small` model.
+- Pinecone returns the top-3 most similar snippets.
+- These retrieved examples are added to the OpenAI prompt for better reasoning and contextual review.
+
+This gives the model real-world grounding before generating suggestions, similar to how a senior engineer references prior code reviews.
+
 
 ## Backend Endpoints
 ```http
@@ -37,29 +40,31 @@ Body: { code, language, filename }
 Resp: { ok, code }
 ```
 
-## 💡 Learnings and Takeaways
+## Learnings and Takeaways
 
-### 🧩 1. AI Integration Patterns
-LLMs alone are stateless, but connecting them with a vector database (Pinecone) transforms them into a reasoning system with memory.  
-Building a small RAG pipeline gave me deeper understanding of embedding storage, similarity search, and context injection.
+### 1. AI Integration Patterns
+-LLMs alone are stateless, but connecting them with a vector database (Pinecone) transforms them into a reasoning system with memory.  
+-Building a small RAG pipeline gave me deeper understanding of embedding storage, similarity search, and context injection.
 
-### 🧠 2. Prompt Engineering Matters
-Different instructions drastically changed the quality of suggestions.  
-Adding “explain like a senior engineer reviewing production code” improved tone and structure.
+### 2. Prompt Engineering Matters
+-Different instructions drastically changed the quality of suggestions.  
+-Adding “explain like a senior engineer reviewing production code” improved tone and structure.
 
-### ⚡ 3. End-to-End Ownership
-I built both frontend and backend — integrating Tailwind, React hooks (`useState`, `useEffect`), and asynchronous fetch requests to verify system health.  
-Debugging full-stack OpenAI + Pinecone integration taught me how to trace data flow and manage environment variables securely.
+### 3. End-to-End Ownership
+-I built both frontend and backend integrating Tailwind, React hooks (`useState`, `useEffect`), and asynchronous fetch requests to verify system health.  
+-Debugging full-stack OpenAI + Pinecone integration taught me how to trace data flow and manage environment variables securely.
 
 ---
 
-## 🪄 Future Improvements
+## Future Improvements
 - Deploy backend to Render or AWS Lambda  
 - Add user authentication for personalized context memory  
 - Implement LLM feedback fine-tuning based on user-rated responses  
 
 ---
 
-## 🧾 Conclusion
-This project helped me explore **LLM integration engineering** — connecting AI reasoning models with external data sources for intelligent automation.  
-It reinforced how **RAG pipelines**, when implemented thoughtfully, can make AI assistants **context-aware and highly reliable**.
+## Conclusion
+This project helped me explore LLM integration engineering, connecting AI reasoning models with external data sources for intelligent automation.
+It reinforced how RAG pipelines, when implemented thoughtfully, can make AI assistants context-aware and highly reliable.
+
+## Source Code: https://github.com/gowthamiedamalapati/AI-Code-Review-Assistant
