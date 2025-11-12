@@ -6,7 +6,8 @@ categories: [AI, LLM, RAG, Pinecone, OpenAI]
 ---
 
 ## Project Overview
-As part of my learning journey in AI integrations, I built a full-stack **AI Code Review Assistant** — a tool that analyzes source code, detects security or performance issues, and suggests automated fixes.  
+As part of my learning journey in AI integrations, I built a full-stack **AI Code Review Assistant** — a tool that analyzes source code, detects security or performance issues, and suggests automated fixes. 
+<!--more--> 
 
 It uses:
 - **OpenAI GPT models** for reasoning and feedback generation  
